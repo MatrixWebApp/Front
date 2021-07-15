@@ -13,7 +13,6 @@ function Variable(props) {
 
     function reduceAugmentedMatrix() {
         setIsAugmented(false)
-        console.log("reduced")
     }
 
 

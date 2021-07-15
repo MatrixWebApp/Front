@@ -13,7 +13,7 @@ function Variables(props){
                             </tr>
                         )
                     })
-                }     
+                }
             </table>
             <div id="addVariableButtonContainer">
                 <button id="addVariableButton" onClick={props.addNewVariable}>+</button> 
