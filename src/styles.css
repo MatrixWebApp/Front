@@ -19,6 +19,7 @@ footer {
     width: 350px;
     height: inherit;
     overflow-y: auto;
+    border-bottom: 2px dashed rgb(0, 0, 0);
 }
 
 #rightBlock {
@@ -46,11 +47,8 @@ footer {
 }
 
 .variable .matrixBlock {
-    margin-left: 5px;
-}
-
-.variable .matrixBlock {
     display: flex;
+    margin-left: 5px;
     flex-direction: column;
     justify-content: center;
     border: 2px dashed rgb(0, 0, 0);
@@ -70,13 +68,20 @@ footer {
 }
 
 .variable .augmentedZone {
-    border-top: 2px dashed rgb(0, 0, 0);
-    border-bottom: 2px dashed rgb(0, 0, 0);
-    border-right: 2px dashed rgb(0, 0, 0);
     height: 100px;
     width: 35px;
     display: flex;
     align-items: center;
+}
+
+.variable .augmentedZone .augmentedMatrixBlock {
+    border-top: 2px dashed rgb(0, 0, 0);
+    border-bottom: 2px dashed rgb(0, 0, 0);
+    border-right: 2px dashed rgb(44, 9, 9);
+    width: inherit;
+    display: flex;
+    justify-content: center;
+    height: inherit;
 }
 
 .variable .augmentedZone .augmentedButtonContainer {
