@@ -3,8 +3,7 @@ import RightBlock from './components/RightBlock'
 import Variable from './components/Variable'
 import './styles.css'
 import Context from './context'
-
-import React, { useContext } from 'react'
+import React from 'react'
 function App() {
   
   const [vars, setVars] = React.useState([])
@@ -19,14 +18,11 @@ function App() {
 }
 
   function deleteVariable(id){ 
- 
-  console.log(vars)
-  setVars(
-    vars.filter(variable =>{return variable.props.id != id})
-  ) 
+    setVars(
+       vars.filter(variable =>{return variable.props.id !== id})
+    ) 
     
- 
-}
+  }
   return (
     <Context.Provider value={{deleteVariable}}>
       <body>
