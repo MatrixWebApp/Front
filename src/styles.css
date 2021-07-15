@@ -74,14 +74,22 @@ footer {
     border-bottom: 2px dashed rgb(0, 0, 0);
     border-right: 2px dashed rgb(0, 0, 0);
     height: 100px;
-    width: 25px;
+    width: 35px;
     display: flex;
     align-items: center;
 }
 
-.variable .augmentedZone .augmentedButton {
+.variable .augmentedZone .augmentedButtonContainer {
     width: fit-content;
-    width: fit-content;
+}
+
+.variable .augmentedZone .reduceMatrixButtonContainer {
+    display: flex;
+    align-items: right;
+}
+
+.variable .augmentedZone button {
+    z-index: 10;
 }
 
 .variable .deleteVariableButton {

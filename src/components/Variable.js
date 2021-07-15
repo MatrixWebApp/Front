@@ -1,13 +1,22 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import Context from '../context'
 
-function Variable(props){
+function Variable(props) {
 
-    const { deleteVariable } = useContext(Context)
-  
-    console.log(props)
+    const { deleteVariable} = useContext(Context)
+    let [isAugmented, setIsAugmented] = React.useState(false)
+
+
+    function expandMatrix(){
+        setIsAugmented(true)
+    }
+
+    function reduceAugmentedMatrix(){
+        setIsAugmented(false)
+    }
+
     return (
-        
+
         <div class="variable" id={props.id}>
             <div class="nameBlock">
                 <span class="name">X</span>
@@ -54,15 +63,46 @@ function Variable(props){
                 </table>
             </div>
             <div class="augmentedZone">
-                <div class="augmentedButton">
-                    <button>x</button>
-                </div>
+                {
+                    isAugmented ?
+                        <div class="augmentedMatrixBlock">
+                            <table>
+
+                                <tr>
+                                    <th>
+                                        <div class="fraction">1/5</div>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div class="fraction">1/5</div>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div class="fraction">1/5</div>
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+                    :
+                        <div class="augmentedButtonContainer">
+                            <button class="augmentedButton" onClick={expandMatrix}>x</button>
+                    </div>    
+                    
+                }
+                {
+                    isAugmented ? 
+                        <div class="reduceMatrixButtonContainer">
+                            <button class="reduceMatrixButton" onClick={reduceAugmentedMatrix}>x</button>
+                        </div> : ""
+                }
             </div>
             <div>
                 <button class="deleteVariableButton" onClick={() => deleteVariable(props.id)}>x</button>
             </div>
         </div>
     )
-    
+
 }
 export default Variable

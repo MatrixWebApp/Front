@@ -5,34 +5,34 @@ import './styles.css'
 import Context from './context'
 import React from 'react'
 function App() {
-  
+
   const [vars, setVars] = React.useState([])
 
-    
 
-  function addNewVariable(){ 
+
+  function addNewVariable() {
     setVars(
-       (() => vars.concat([<Variable deleteVariable={deleteVariable} id={Date.now()} key={Date.now()}/>]))()
+      (() => vars.concat([<Variable deleteVariable={deleteVariable} id={Date.now()} key={Date.now()} />]))()
     )
-    console.log(vars.length)
-}
-
-  function deleteVariable(id){ 
-    setVars(
-       vars.filter(variable =>{return variable.props.id !== id})
-    ) 
-    
   }
+
+  function deleteVariable(id) {
+    setVars(
+      vars.filter(variable => { return variable.props.id !== id })
+    )
+
+  }
+
   return (
-    <Context.Provider value={{deleteVariable}}>
+    <Context.Provider value={{ deleteVariable }}>
       <body>
         <header>
           <p>header</p>
         </header>
         <div id="main">
-            <Variables vars={vars}
-                      addNewVariable={addNewVariable} />
-            <RightBlock />
+          <Variables vars={vars}
+            addNewVariable={addNewVariable} />
+          <RightBlock />
         </div>
         <footer>
           <p>footer</p>
