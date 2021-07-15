@@ -4,6 +4,14 @@ class RightBlock extends Component {
     render(){
         return (
             <div id="rightBlock">
+                <div id="input">
+                    <form name="expressionField">
+                        <input></input>
+                    </form>
+                    <div id="calculateButton">
+                        <button>=</button>
+                    </div> 
+                </div>
                 <div id="resultBlock">
                     <table>
                         <tr>
