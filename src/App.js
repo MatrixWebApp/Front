@@ -6,6 +6,9 @@ import Context from './context'
 import React from 'react'
 function App() {
 
+  // TODO 
+  // vars contains nil to maintain logic of state changin. That's look like bad practice
+  // ask to Vitay
   const [vars, setVars] = React.useState([])
 
 
@@ -18,7 +21,7 @@ function App() {
 
   function deleteVariable(id) {
     setVars(
-      vars.filter(variable => { return variable.props.id !== id })
+      vars.map(variable => (variable?.props.id === id) ? null: variable)
     )
 
   }

@@ -3,21 +3,23 @@ import Context from '../context'
 
 function Variable(props) {
 
-    const { deleteVariable} = useContext(Context)
+    const { deleteVariable } = useContext(Context)
     let [isAugmented, setIsAugmented] = React.useState(false)
 
 
-    function expandMatrix(){
+    function expandMatrix() {
         setIsAugmented(true)
     }
 
-    function reduceAugmentedMatrix(){
+    function reduceAugmentedMatrix() {
         setIsAugmented(false)
+        console.log("reduced")
     }
+
 
     return (
 
-        <div class="variable" id={props.id}>
+        <div class="variable" id={props.id} >
             <div class="nameBlock">
                 <span class="name">X</span>
                 <sub class="size">
@@ -64,7 +66,7 @@ function Variable(props) {
             </div>
             <div class="augmentedZone">
                 {
-                    isAugmented ?
+                    isAugmented ? <>
                         <div class="augmentedMatrixBlock">
                             <table>
 
@@ -85,17 +87,14 @@ function Variable(props) {
                                 </tr>
                             </table>
                         </div>
-                    :
-                        <div class="augmentedButtonContainer">
-                            <button class="augmentedButton" onClick={expandMatrix}>x</button>
-                    </div>    
-                    
-                }
-                {
-                    isAugmented ? 
                         <div class="reduceMatrixButtonContainer">
                             <button class="reduceMatrixButton" onClick={reduceAugmentedMatrix}>x</button>
-                        </div> : ""
+                        </div>
+                    </>
+                        :
+                        <div class="augmentedButtonContainer">
+                            <button class="augmentedButton" onClick={expandMatrix}>x</button>
+                        </div>
                 }
             </div>
             <div>
