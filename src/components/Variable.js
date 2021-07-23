@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
 import Context from '../context'
 import Fraction from './Fraction'
-
+import generateArray from './utils'
 
 
 function Variable(props) {
 
     const { deleteVariable } = useContext(Context)
+    let name = React.useState(props.name)
     let [isAugmented, setIsAugmented] = React.useState(false)
     let [width, setWidth] = React.useState(2)
     let [height, setHeight] = React.useState(2)
@@ -29,19 +30,10 @@ function Variable(props) {
         let oldWidth = width
         let newWidth = event.target.value
         if (newWidth === "") return;
-        setValues(values => {
-            
-            if (newWidth > oldWidth){
-                let newColumns = []
-                for (let i = 0; i < newWidth-oldWidth; i++){
-                    newColumns.push(<Fraction />)
-                }
-                return values.map(row => row.concat(newColumns))
-            }
-            else{
-                return values.map(row => row.slice(0, newWidth))
-            }
-        })
+        setValues(values => newWidth > oldWidth ?
+                                values.map(row => row.concat(generateArray(<Fraction />, newWidth - oldWidth))):
+                                    values.map(row => row.slice(0, newWidth))    
+        )
         setWidth(newWidth);
     }
 
@@ -51,14 +43,10 @@ function Variable(props) {
         if (newHeight === "") return;
         console.log(oldHeight, newHeight)
         setValues(values => {
-            
             if (newHeight > oldHeight){
-                let newRows = [[]]
-                for (let i = 0; i < width; i++){
-                    newRows[0].push(<Fraction />)
-                }
-                for (let i = 0; i < newHeight - oldHeight-1; i++){
-                    newRows.push(newRows[0])
+                let newRows = []
+                for (let i = 0; i < newHeight - oldHeight; i++){
+                    newRows.push(generateArray(<Fraction />, width))
                 }
                 return values.concat(newRows)
             }
@@ -74,7 +62,7 @@ function Variable(props) {
 
         <div class="variable" id={props.id} >
             <div class="nameBlock">
-                <span class="name">X</span>
+                <span class="name">{name}</span>
                 <sub class="size">
                     <span class="height">
                         <input type="text" value={height} onChange={handleHeightChange}></input> 

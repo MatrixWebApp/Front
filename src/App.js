@@ -4,18 +4,21 @@ import Variable from './components/Variable'
 import './styles.css'
 import Context from './context'
 import React from 'react'
+import {generateName} from './components/utils'
+
 function App() {
 
   // TODO 
   // vars contains nil to maintain logic of state changin. That's look like bad practice
-  // ask to Vitay
+  // ask to Vitya
   const [vars, setVars] = React.useState([])
 
-
-
   function addNewVariable() {
+
     setVars(
-      (() => vars.concat([<Variable deleteVariable={deleteVariable} id={Date.now()} key={Date.now()} />]))()
+      (() => vars.concat(
+        [<Variable deleteVariable={deleteVariable} id={Date.now()} key={Date.now()} name={generateName()} />]
+      ))()
     )
   }
 
